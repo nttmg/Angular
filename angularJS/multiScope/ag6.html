@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$scope mapping controller to model and view</title>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="myController1">
+        <!-- coding here -->
+    </div>
+    <div ng-controller="myController2">
+        <!-- coding here -->
+    </div>
+    <script>
+        //tạo ra một Instance từ Angular.
+        var angApp = angular.module("myApp", []); //model, controller, view of angularjs
+        angApp.controller("myController1" , function($scope){});
+        angApp.controller("myController2" , function($scope){});
+    </script>
+    
+</body>
+</html>

@@ -1,7 +1,8 @@
 angular.module("app", []);
 
 angular.module("app").controller("MainController", function() {
-    var vm = this;
+    var vm = this;//đối tơngj hiện tại OBJECT of this context
+    //this: OPP => đại diện cho object đang thực thi(view model)
     vm.title ="Learn Angular by Example";
     vm.searchInput = "";
     vm.shows = [
