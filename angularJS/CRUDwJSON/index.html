@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+     crossorigin="anonymous">
+     <script src="/data.js"></script>
+     <link rel="stylesheet" href="/style.css">
+    <h1>AngularJs CRUD data JSON file</h1>
+</head>
+<body>
+    <br>
+    <div ng-app="App" ng-controller="ContactController">
+        <div class="input-group">
+            <input type="text" placeholder="Search" class="search-control" ng-model="ContactController.searchInput">
+        </div>
+
+        <form class="well">
+            <label>Name</label>
+            <input type="text" name="name" ng-model="newcontact.name">
+            <label>Email</label>
+            <input type="email" name="email" ng-model="newcontact.email">
+            <label>Phone</label>
+            <input type="text" name="phone" ng-model="newcontact.phone">
+            <br>
+            <input type="hidden" ng-model="newcontact.id">
+            <br>
+            <input type="button" value="Save" ng-click="saveContact()" class="btn btn-primary">
+        </form>
+        <br>
+        <select class="form-control pull-right" ng-model="ContactController.order" 
+        ng-options="order as order.title for order in ContactController.orders "></select>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="contact in contacts | filter: ContactController.searchInput | orderBy:ContactController.order.key:ContactController.order.reverse ">
+                    <td>{{ contact.name }}</td>
+                    <td>{{ contact.email }}</td>
+                    <td>{{ contact.phone }}</td>
+                    <td>
+                        <a href="#" ng-click="edit(contact.id)">edit</a> |
+                        <a href="#" ng-click="delete(contact.id)">delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
