@@ -48,7 +48,7 @@ angular.module("app").controller("MainController", function() {
         {
             id: 3,
             title: "Title Ascending",
-            key: "Title",
+            key: "title",
             reverse: false
         },
         {
