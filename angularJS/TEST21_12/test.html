@@ -4,27 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- CSS -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" />
-    <style>
-        body { padding-top: 30px;}
-    </style>
-    <!-- JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js" integrity="sha512-KZmyTq3PLx9EZl0RHShHQuXtrvdJ+m35tuOiwlcZfs/rE7NZv29ygNA8SFCkMXTnYZQK2OX0Gm2qKGfvWEtRXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="/js/app2.js"></script>
+    <script src="/test.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+     crossorigin="anonymous">
+     <link rel="stylesheet" href="test.css">
+    <title>Document</title>
 </head>
-<body ng-app="validationApp" ng-controller="mainController" >
-    <div class="container">
-        <!-- Page header -->
-        <div class="page-header">
-            <h1>AngularJS Form Validation</h1>
-        </div>
+<body>
+    <div ng-app="App" ng-controller="myCtrl">
+        <h3>Create user</h3>
+        <form class="form" name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate>
 
-        <!-- pass in the vairiable if uor form is valid or invalid -->
-        <form name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate>
-
-            <!-- Name -->
             <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine }">
                 <label >Name</label>
                 <input type="text" name="name" class="form-control" ng-model="user.name" required>
@@ -32,7 +24,6 @@
 
             </div>
 
-            <!-- Username -->
 
             <div class="form-group" ng-class="{ 'has-error' : userForm.username.$invalid && !userForm.username.$pristine }">
                 <label for="" >Username</label>
@@ -41,7 +32,11 @@
                 <p ng-show="userForm.username.$error.max-length" class="help-block">Username is too long.</p>
             </div>
 
-            <!-- Email -->
+            <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+                <label for="">Password</label>
+                <input type="password" name="password" class="form-control" ng-model="user.password">
+                <p ng-show="userForm.password.$invalid && !userForm.password.$pristine" class="help-block">Enter a password.</p>
+            </div>
 
             <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
                 <label for="">Email</label>
@@ -51,6 +46,24 @@
 
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+        <br>
+
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="contact in contacts ">
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.phone }}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </body>
 </html>
